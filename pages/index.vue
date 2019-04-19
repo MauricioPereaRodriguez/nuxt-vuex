@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <div>
     <!--<h1>{{ $store.state.titulo }}</h1>-->
     <h1>{{ titulo }}</h1>
     <h2>{{ subtitulo }}</h2>
@@ -17,11 +17,13 @@
       </tr>
     </table>
     <button @click="get">Ejectuar acción</button>
-  </section>
+    <br>
+    <h2>Número de personas: {{ contador }}</h2>
+  </div>
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'vuex'
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 export default {
   data(){
     return {
@@ -29,7 +31,8 @@ export default {
     }
   },
   computed: {
-    ...mapState(['titulo', 'subtitulo', 'personas'])
+    ...mapState(['titulo', 'subtitulo', 'personas']),
+    ...mapGetters(['contador'])
   },
   methods:{
     ...mapMutations(['cambioTitulo']),

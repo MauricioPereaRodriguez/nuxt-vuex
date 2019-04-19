@@ -26,3 +26,9 @@ export const actions = {
       })
   }
 }
+
+export const getters = {
+  contador(state){
+    return state.personas.length
+  }
+}
