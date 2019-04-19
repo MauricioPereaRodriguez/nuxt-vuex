@@ -1,6 +1,9 @@
+import axios from 'axios'
+
 export const state = () => ({
   titulo: 'Mi primer nuxt con vuex',
-  subtitulo: 'Soy un subtitulo'
+  subtitulo: 'Soy un subtitulo',
+  personas: []
 })
 
 export const mutations = {
@@ -9,5 +12,17 @@ export const mutations = {
   },
   cambioSubtitulo(state, valor){
     state.subtitulo = valor
+  },
+  llenar(state, valor){
+    state.personas = valor
+  }
+}
+
+export const actions = {
+  async get({commit}){
+    await axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(res => {
+        commit('llenar', res.data)
+      })
   }
 }
